@@ -1,4 +1,4 @@
-package com.hmiapp;
+package hmi.app;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

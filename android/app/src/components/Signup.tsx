@@ -103,7 +103,7 @@ const SizedBox: React.FC<Props> = ({ height, width }) => {
   return <View style={{ height, width }} />;
 };
 
-const Signup=({navigation})=> {
+const Signup=({navigation}: {navigation: any})=> {
 
     const [FirstName, setFirstName] = useState("")
     const [LastName, setLastName] = useState("")

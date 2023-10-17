@@ -105,7 +105,7 @@ const SizedBox: React.FC<Props> = ({ height, width }) => {
   return <View style={{ height, width }} />;
 };
 
-const Form = ({ navigation }) => {
+const Form = ({navigation}: {navigation: any}) => {
   const styles = useStyles();
   
 
@@ -157,7 +157,7 @@ const Form = ({ navigation }) => {
   const [date,setDate] = useState<Date>(nullDate);
   const [time, setTime] = useState<Date>(nullDate);
   const [datetime, setDatetime] = useState("Add Date and Time")
-  let handleSubmit = async (e) => {
+  let handleSubmit = async (e : any) => {
 
     fetch("http://hmi-data.onrender.com/api/log", {
       method: "POST",
@@ -215,18 +215,18 @@ const Form = ({ navigation }) => {
     setTimePickerVisibility(false);
   };
 
-  const handleConfirm = (date) => {
+  const handleConfirm = (date : any) => {
     setDate(date);
     hideDatePicker();
     setTime(nullDate);
     setTimePickerVisibility(true);
   };
-  const handleConfirm2 = (time) => {
+  const handleConfirm2 = (time : any) => {
     setTime(time);
     hideTimePicker();
   };
 
-  const formatDate = (date,time)=> {
+  const formatDate = (date : any,time : any)=> {
     let dt = ("0"+date.getDate()).slice(-2)+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+date.getFullYear()+" "+("0"+time.getHours()).slice(-2)+":"+("0"+time.getMinutes()).slice(-2);
     setDatetime(dt)
     return dt;
@@ -348,16 +348,16 @@ return (
             </Pressable>
             <SizedBox height={16} />
             <View style={{marginLeft:15,display:'flex',flexDirection:'row',marginTop:10,justifyContent:'space-around'}}>
-            <RadioForm
+            {/* <RadioForm
             formHorizontal={true}
             labelHorizontal={true}
             labelColor={'white'}
         radio_props={radio_props}
         initial="In" //initial value of this group
-        onPress={(value) => {
+        onPress={(value : any) => {
           setChosenOption(value);
         }} //if the user changes options, set the new value
-      />
+      /> */}
       <TouchableOpacity onPress={showDatePicker}>
       <View style={{backgroundColor:'rgb(58, 58, 60)',height:50,width:200,borderRadius:4,marginTop:-6,alignItems:'center'}}><Text style={{color: '#FFFFFF',fontSize:16,marginTop:8}}>{datetime}</Text></View>
       </TouchableOpacity>

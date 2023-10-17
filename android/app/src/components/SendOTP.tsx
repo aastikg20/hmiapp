@@ -113,40 +113,40 @@ const SizedBox: React.FC<Props> = ({ height, width }) => {
   return <View style={{ height, width }} />;
 };
 
-const OTPPage=({navigation})=> {
+const OTPPage=({navigation}: {navigation: any})=> {
 
 
   const [otp, setotp] = useState("");
   const [message, setMessage] = useState("");
 
-  let handleSubmit = async (e) => {
-    try{
-    const response=fetch("http://hmi-data.onrender.com/api/otp", {
-      mode:'no-cors',
-      method: "POST",
-      headers: {
-        'Accept': 'application/json, text/plain, */*',  // It can be used to overcome cors errors
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
-      },
-      body: JSON.stringify({
-        otp:otp
-      }),
-    })
-      // .then((response) => response.text())
-      const json=(await response).text();
+  let handleSubmit = async (e: any) => {
+    try {
+      const response = await fetch("http://hmi-data.onrender.com/api/otp", {
+        mode: 'no-cors',
+        method: "POST",
+        headers: {
+          'Accept': 'application/json, text/plain, */*',  // It can be used to overcome cors errors
+          'Content-Type': 'application/json',
+          "Access-Control-Allow-Origin": "*"
+        },
+        body: JSON.stringify({
+          otp: otp
+        }),
+      });
+      const json = await response.json();
 
-        console.log('Fetch Success==================');
-        console.log(json);
-        if(json["success"]){
-          setMessage(`Account Verified Successfully ! Click here to proceed to Login Page.`)        }
-        else{
-          setMessage("Account not Verified.")
-        }
-        setotp("")
+      console.log('Fetch Success==================');
+      console.log(json);
+      if (json["success"]) {
+        setMessage(`Account Verified Successfully ! Click here to proceed to Login Page.`)
       }
+      else {
+        setMessage("Account not Verified.")
+      }
+      setotp("")
+    }
 
-      catch{((error) => console.log(error))}
+    catch { ((error: any) => console.log(error)) }
   }
 
   return (

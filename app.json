@@ -1,5 +1,25 @@
 {
   "name": "main",
   "displayName": "HMI",
-  "icon": "./assets/icon.png"
+  "icon": "./assets/icon.png",
+  "expo": {
+    "userInterfaceStyle": "automatic",
+    "name": "HMI",
+    "icon": "./assets/icon.png",
+    "slug": "hmi",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "hmi.app",
+      "icon": "./assets/icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d9cb91d4-4480-4b3d-9f64-dfe18a3ce182"
+      }
+    },
+    "owner": "aastikg20"
+  }
 }
